@@ -1,4 +1,4 @@
-package com.hsbc.cmb.hk.dbb.pages.supplyChains;
+package com.hsbc.cmb.hk.dbb.pages.supplyChains.tubeByInputting;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -45,6 +45,9 @@ public class creatCustomers_page extends PageObject {
     @FindBy(xpath = "//div[@class='form_btn_bottom']//span[contains(text(), 'Previous ')]")
     public WebElementFacade previousBtn;
 
+    @FindBy(xpath = "//span[text()='Administrator 1 ']")
+    public WebElementFacade checkNextPage;
+
     @FindBy(xpath = "//label[@for='authorOne.firstName']/following-sibling::div//input")
     public WebElementFacade firstNameInput;
 
@@ -69,4 +72,6 @@ public class creatCustomers_page extends PageObject {
     @FindBy(xpath = "//label[@for='authorTwo.mobile']/following-sibling::div//input")
     public WebElementFacade mobileSecondInput;
 
+    @FindBy(xpath = "//span[text()='Submit ']")
+    public WebElementFacade submitBtn;
 }
