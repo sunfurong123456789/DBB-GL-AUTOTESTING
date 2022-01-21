@@ -3,12 +3,17 @@ package com.hsbc.cmb.hk.dbb.glue.supplyChains.tubeByInputting;
 import com.hsbc.cmb.hk.dbb.steps.supplyChains.systemManager.logon_step;
 import com.hsbc.cmb.hk.dbb.steps.supplyChains.tubeByInputting.creatCustomers_step;
 import com.hsbc.cmb.hk.dbb.utils.*;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
+import org.openqa.selenium.JavascriptExecutor;
+
+import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getDriver;
 
 public class creatCustomers_glue {
     @ManagedPages
@@ -41,11 +46,11 @@ public class creatCustomers_glue {
         customers_step.getClickCreateCustomerBtn();
         customers_step.getSelectCustomerType();
         customers_step.getCustomerTypeValue();
-        customers_step.getCompanyName(JRandomNameTool.getStringRandom(12));
-        customers_step.getCompanyID(g.generate());
+        customers_step.getCompanyName(JRandomNameTool.getStringRandom(4));
+        customers_step.getCompanyID(RandomPhoneNumber.randomPhoneNum());
         customers_step.getSelectCountryOfRegistration();
         customers_step.getCountryOfRegistrationValue();
-        customers_step.getCompanyNameLeft(JRandomNameTool.getStringRandom(15));
+        customers_step.getCompanyNameLeft(JRandomNameTool.getStringRandom(10));
         customers_step.getCLickNextBtn();
     }
 
@@ -54,11 +59,11 @@ public class creatCustomers_glue {
         customers_step.getClickCreateCustomerBtn();
         customers_step.getSelectCustomerType();
         customers_step.getCustomerTypeSupplier();
-        customers_step.getCompanyName(JRandomNameTool.getRandomJianHan(9));
-        customers_step.getCompanyID(g.generate());
+        customers_step.getCompanyName(JRandomNameTool.getRandomJianHan(4));
+        customers_step.getCompanyID(RandomPhoneNumber.randomPhoneNum());
         customers_step.getSelectCountryOfRegistration();
         customers_step.getCountryOfRegistrationValue();
-        customers_step.getCompanyNameLeft(JRandomNameTool.getStringRandom(15));
+        customers_step.getCompanyNameLeft(JRandomNameTool.getStringRandom(10));
         customers_step.getCLickNextBtn();
     }
 
@@ -69,7 +74,7 @@ public class creatCustomers_glue {
 
     @When("^Fill in email 1 and email 2 supplier information on the Authorized Person page$")
     public void fillInAdministratorAndAdministratorSupplierInformationOnTheAuthorizedPersonPage() {
-        customers_step.getFirstNameInput(JRandomNameTool.getStringRandom(8));
+        customers_step.getFirstNameInput(JRandomNameTool.getStringRandom(6));
         bddUtil.switchToNewWindow();
         customers_step.emailOperation(mailName);
         bddUtil.switchToWindows();
@@ -77,7 +82,7 @@ public class creatCustomers_glue {
         System.out.println("---------------第一个邮箱地址："+ mailName + "@MailTemp.top"+"----------------------");
         customers_step.getLastName(JRandomNameTool.getRandomJianHan(4));
         customers_step.getMobileInput(RandomPhoneNumber.randomPhoneNum());
-        customers_step.getFirstNameSecondInput(JRandomNameTool.getStringRandom(8));
+        customers_step.getFirstNameSecondInput(JRandomNameTool.getStringRandom(4));
         customers_step.getEmailSecondInput(mailName1  + "@MailTemp.top");
         System.out.println("---------------第二个邮箱地址："+ mailName1 + "@MailTemp.top"+"----------------------");
         customers_step.getLastNameSecondInput(JRandomNameTool.getStringRandom(4));
@@ -89,7 +94,7 @@ public class creatCustomers_glue {
 
     @When("^Fill in email 1 and email 2 buyer information on the Authorized Person page$")
     public void fillInAdministratorAndAdministratorBuyerInformationOnTheAuthorizedPersonPage() {
-        customers_step.getFirstNameInput(JRandomNameTool.getStringRandom(8));
+        customers_step.getFirstNameInput(JRandomNameTool.getStringRandom(6));
         bddUtil.switchToNewWindow();
         customers_step.emailOperation(mailName);
         bddUtil.switchToWindows();
@@ -97,10 +102,10 @@ public class creatCustomers_glue {
         System.out.println("---------------第一个邮箱地址："+ mailName + "@MailTemp.top"+"----------------------");
         customers_step.getLastName(JRandomNameTool.getRandomJianHan(4));
         customers_step.getMobileInput(RandomPhoneNumber.randomPhoneNum());
-        customers_step.getFirstNameSecondInput(JRandomNameTool.getStringRandom(8));
+        customers_step.getFirstNameSecondInput(JRandomNameTool.getStringRandom(4));
         customers_step.getEmailSecondInput(mailName1  + "@MailTemp.top");
         System.out.println("---------------第二个邮箱地址："+ mailName1 + "@MailTemp.top"+"----------------------");
-        customers_step.getLastNameSecondInput(JRandomNameTool.getStringRandom(8));
+        customers_step.getLastNameSecondInput(JRandomNameTool.getStringRandom(4));
         customers_step.getMobileSecondInput(RandomPhoneNumber.randomPhoneNum());
         customers_step.clickSubmitBtn();
     }
@@ -133,6 +138,75 @@ public class creatCustomers_glue {
     @Then("^I check that the email has been sent successfully$")
     public void iCheckThatTheEmailHasBeenSentSuccessfully() {
         customers_step.checkSendEmailSuccess();
+    }
+
+    @When("^I get the verification code in the email and click to jump to the GLDB page to fill in the information and generate the verification code$")
+    public void iGetTheVerificationCodeInTheEmailAndClickToJumpToTheGLDBPageToFillInTheInformationAndGenerateTheVerificationCode() {
+        customers_step.selectFirstEmailAndTakeVCode(mailName);
+    }
+
+    @And("^I went back to the email page to get the verification code$")
+    public void iWentBackToTheEmailPageToGetTheVerificationCode() {
+        JavascriptExecutor webdriver = (JavascriptExecutor)getDriver();
+        webdriver.executeScript("window.open(\"https://mailtemp.top/mailbox?name="+mailName+"\");");
+        bddUtil.switchToNewWindow();
+        customers_step.thirdEmail();
+    }
+
+    @And("^I enter Company ID and click Login button$")
+    public void iEnterCompanyIDAndClikLoginButton() {
+        customers_step.enterCompanyIdAndClickLoginBtn();
+    }
+
+    @Then("^Click login to jump to the Set New Password page$")
+    public void clickLoginToJumpToTheSetNewPasswordPage() {
+        customers_step.setNewPasswordPage();
+    }
+
+    @When("^After login Set a New Password on the Set New Password page$")
+    public void afterLoginSetANewPasswordOnTheSetNewPasswordPage() {
+        customers_step.enterNewPassword();
+    }
+
+    @Then("^I jump to the login page$")
+    public void iJumpToTheLoginPage() {
+        customers_step.jumpLoginPage();
+    }
+
+    @When("^I fill in the content on the login page and click operation$")
+    public void iFillInTheContentOnTheLoginPageAndClickOperation() {
+        customers_step.enterLoginInformationAgain(mailName);
+    }
+
+
+    @When("^I click agree Service Agreement$")
+    public void iClickAgreeServiceAgreement() {
+        customers_step.getClickCheckBox();
+    }
+
+    @Then("^I jump to the Tell Us About Your Company page$")
+    public void iJumpToTheTellUsAboutYourCompanyPage() {
+        customers_step.checkJumpPageTellUsTitle();
+    }
+
+    @When("^I entered information on the Tell Us About Your Company page$")
+    public void iEnteredInformationOnTheTellUsAboutYourCompanyPage() {
+        customers_step.companyPageInformation(mailName);
+
+    }
+
+    @When("^I login service agreement window$")
+    public void iLoginServiceAgreementWindow() {
+        customers_step.openEmailUrl();
+        customers_step.iLoginServiceAgreementWindow();
+    }
+
+    @Given("^logon \"([^\"]*)\" test code$")
+    public void logonTestCode(String envName) {
+        envTag = envName;
+        if (!envName.isEmpty()) {
+            customers_step.open_the_first_dbb_logon_page(envName);
+        }
     }
 
 //    @After
