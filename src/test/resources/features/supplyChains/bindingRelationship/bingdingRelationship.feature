@@ -1,5 +1,5 @@
 @bingdingRelationship
-Feature: test login_test
+Feature: test bingdingRelationship
 
   Scenario:The operator binds a supplier relationship that does not exist between a single system for the buyer's customer, and the binding is successful
     Given logon "environments_1" on tube by inputting system
