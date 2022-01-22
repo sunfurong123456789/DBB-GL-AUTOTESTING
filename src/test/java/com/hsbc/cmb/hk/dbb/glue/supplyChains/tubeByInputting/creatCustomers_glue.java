@@ -209,6 +209,56 @@ public class creatCustomers_glue {
         }
     }
 
+    @Then("^Check whether to jump to the next page after filling in the content of Company page$")
+    public void checkWhetherToJumpToTheNextPageAfterFillingInTheContentOfCompanyPage() {
+        customers_step.jumpSetUpPrimaryAdminTitle();
+    }
+
+    @When("^Fill in the administrator information on the People page and click Next to go to the Next page$")
+    public void fillInTheAdministratorInformationOnThePeoplePageAndClickNextToGoToTheNextPage() {
+        customers_step.enterInformationOnPeoplePage();
+    }
+
+    @Then("^Verify whether the director page is displayed$")
+    public void clickNextToGoToThePageForFillingInDirectorInformation() {
+        customers_step.jumpToDirectorInformation();
+    }
+
+    @When("^Fill in the board information on the current page and click the Next button$")
+    public void fillInTheBoardInformationOnTheCurrentPageAndClickTheNextButton() {
+        customers_step.fillInTheInformationOnTheDirectorPage(mailName);
+    }
+
+    @Then("^Verify whether the Shareholder page is displayed$")
+    public void clickNextButtonToJumpToThePageOfShareholderInformationFilling() {
+        customers_step.jumpToTheShareholderInformation();
+    }
+
+    @When("^Fill in the user information on the Shareholder page$")
+    public void fillInTheUserInformationOnTheShareholderPage() {
+        customers_step.fillInTheInformationOnTheShareholderPage(mailName);
+    }
+
+    @Then("^Verify whether the Beneficial page is displayed$")
+    public void verifyWhetherTheBeneficialPageIsDisplayed() {
+        customers_step.verifyWhetherTheBeneficialPageIsDisplayed();
+    }
+
+    @When("^Fill in the information on the Beneficial page$")
+    public void fillInTheInformationOnTheBeneficialPage() {
+        customers_step.fillInTheInformationOnTheBeneficialPage(mailName);
+    }
+
+    @Then("^Verify whether the Account page is displayed$")
+    public void verifyWhetherTheAccountPageIsDisplayed() {
+        customers_step.verifyWhetherTheAccountPageIsDisplayed();
+    }
+
+    @When("^Enter the Account information$")
+    public void enterTheAccountInformation() {
+        customers_step.enterTheAccountInformation();
+    }
+
 //    @After
 //    public void testCase(){
 //        System.out.println("--------------------testcase--------------------");

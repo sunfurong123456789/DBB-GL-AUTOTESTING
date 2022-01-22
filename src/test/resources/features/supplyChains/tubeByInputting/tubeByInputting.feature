@@ -45,3 +45,13 @@ Feature: tube By Inputtingt
       When I click agree Service Agreement
       Then I jump to the Tell Us About Your Company page
       When I entered information on the Tell Us About Your Company page
+      Then Check whether to jump to the next page after filling in the content of Company page
+      When Fill in the administrator information on the People page and click Next to go to the Next page
+      Then Verify whether the director page is displayed
+      When Fill in the board information on the current page and click the Next button
+      Then Verify whether the Shareholder page is displayed
+      When Fill in the user information on the Shareholder page
+      Then Verify whether the Beneficial page is displayed
+      When Fill in the information on the Beneficial page
+      Then Verify whether the Account page is displayed
+      When Enter the Account information

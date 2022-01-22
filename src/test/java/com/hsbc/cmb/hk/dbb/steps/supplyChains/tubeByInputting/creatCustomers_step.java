@@ -314,4 +314,162 @@ public class creatCustomers_step extends ScenarioSteps {
         customers_page.GLDBEmailLoginBtn.click();
 
     }
+
+    @Step
+    public void jumpSetUpPrimaryAdminTitle(){
+        customers_page.jumpSetUpPrimaryAdminTitle.isVisible();
+    }
+
+    @Step
+    public void enterInformationOnPeoplePage(){
+        customers_page.admin1DateOfBirth.sendKeys(bddUtil.dateFormate());
+        customers_page.admin1LegalCountry.click();
+        bddUtil.scrollWindowToElement(customers_page.admin1LegalCountrySelectChina).click();
+        customers_page.admin1CountryOfResidence.click();
+        bddUtil.scrollWindowToElement(customers_page.admin1CountryOfResidenceSelectChina).click();
+        customers_page.admin1ResidentialAddress.sendKeys(JRandomNameTool.getStringRandom(10));
+        customers_page.admin1LegalCertificationType.click();
+        bddUtil.scrollWindowToElement(customers_page.admin1LegalCertificationTypeSelectPersonlId).click();
+        customers_page.admin1LegalCertificationNo.sendKeys(RandomPhoneNumber.randomPhoneNum());
+//        bddUtil.scrollWindowToElement(customers_page.admin2TimePermanent).click();
+        bddUtil.scrolltoButtom();
+        customers_page.admin2DateOfBirth.sendKeys(bddUtil.dateFormate());
+        customers_page.admin2LegalCountry.click();
+        bddUtil.scrollWindowToElement(customers_page.admin2LegalCountrySelectChina).click();
+        customers_page.admin2CountryOfResidence.click();
+        bddUtil.scrollWindowToElement(customers_page.admin2CountryOfResidenceSelectChina).click();
+        customers_page.admin2ResidentialAddress.sendKeys(JRandomNameTool.getStringRandom(10));
+        customers_page.admin2LegalCertificationType.click();
+        bddUtil.scrollWindowToElement(customers_page.admin2LegalCertificationTypeSelectPassport).click();
+        customers_page.admin2LegalCertificationNo.sendKeys(RandomPhoneNumber.randomPhoneNum());
+        customers_page.SaveBtnIndustry.click();
+        customers_page.nextBtnIndustry.click();
+    }
+
+    @Step
+    public void jumpToDirectorInformation(){
+        customers_page.directorOfTheInformation.isVisible();
+    }
+
+    @Step
+    public void jumpToTheShareholderInformation(){
+        customers_page.shareholderOfTheInformation.isVisible();
+    }
+
+    @Step
+    public void fillInTheInformationOnTheDirectorPage(String value){
+        customers_page.director1CheckBox.click();
+        customers_page.director1FirstName.sendKeys(JRandomNameTool.getRandomJianHan(3));
+        customers_page.director1LastName.sendKeys(JRandomNameTool.getRandomJianHan(3));
+        customers_page.director1CertificationType.click();
+        bddUtil.scrollWindowToElement(customers_page.director1PersonalId).click();
+        customers_page.director1CertificationNo.sendKeys(RandomPhoneNumber.randomPhoneNum());
+        customers_page.director1DateOfBirth.sendKeys(bddUtil.dateFormate());
+        customers_page.director1Country.click();
+        bddUtil.scrollWindowToElement(customers_page.director1CountrySelectChina).click();
+        customers_page.director1ResidentialAddress.sendKeys(JRandomNameTool.getStringRandom(10));
+        customers_page.director1Email.sendKeys(value);
+        customers_page.director1CountryOfResidence.click();
+        bddUtil.scrollWindowToElement(customers_page.director1CountryOfResidenceSelectChina).click();
+        customers_page.director1Phone.sendKeys(RandomPhoneNumber.randomPhoneNum());
+//        bddUtil.scrollWindowToElement(customers_page.director2TimePermanent).click();
+        bddUtil.scrolltoButtom();
+        customers_page.director2CheckBox.click();
+        customers_page.director2FirstName.sendKeys(JRandomNameTool.getRandomJianHan(3));
+        customers_page.director2LastName.sendKeys(JRandomNameTool.getRandomJianHan(3));
+        customers_page.director2CertificationType.click();
+        bddUtil.scrollWindowToElement(customers_page.director2Passport).click();
+        customers_page.director2CertificationNo.sendKeys(RandomPhoneNumber.randomPhoneNum());
+        customers_page.director2TimePermanentCheckBox.click();
+        customers_page.director2DateOfBirth.sendKeys(bddUtil.dateFormate());
+        customers_page.director2Country.click();
+        bddUtil.scrollWindowToElement(customers_page.director2CountrySelectChina).click();
+        customers_page.director2ResidentialAddress.sendKeys(JRandomNameTool.getStringRandom(10));
+        customers_page.director2Email.sendKeys(value);
+        customers_page.director2CountryOfResidence.click();
+        bddUtil.scrollWindowToElement(customers_page.director2CountryOfResidenceSelectChina).click();
+        customers_page.director2Phone.sendKeys(RandomPhoneNumber.randomPhoneNum());
+        customers_page.SaveBtnIndustry.click();
+        customers_page.nextBtnIndustry.click();
+    }
+
+    @Step
+    public void fillInTheInformationOnTheShareholderPage(String value){
+        customers_page.shareholder1FirstName.sendKeys(JRandomNameTool.getRandomJianHan(3));
+        customers_page.shareholder1LastName.sendKeys(JRandomNameTool.getRandomJianHan(4));
+        customers_page.shareholder1CertificationType.click();
+        bddUtil.scrollWindowToElement(customers_page.shareholder1CertificationTypeSelectPersonalId).click();
+        customers_page.shareholder1CertificationNo.sendKeys(RandomPhoneNumber.randomPhoneNum());
+        customers_page.shareholder1DateOfBirth.sendKeys(bddUtil.dateFormate());
+        customers_page.shareholder1Country.click();
+        bddUtil.scrollWindowToElement(customers_page.shareholder1CountrySelectChina).click();
+        customers_page.shareholder1CountryOfResidence.click();
+        bddUtil.scrollWindowToElement(customers_page.shareholder1CountryOfResidenceSelectChina).click();
+        customers_page.shareholder1Email.sendKeys(value);
+        customers_page.shareholder1Phone.sendKeys(RandomPhoneNumber.randomPhoneNum());
+        customers_page.shareholder1ResidentialAddress.sendKeys(JRandomNameTool.getStringRandom(10));
+//        bddUtil.scrollWindowToElement(customers_page.shareholder2FundScale).click();
+        bddUtil.scrolltoButtom();
+        customers_page.shareholder1FundScale.sendKeys("25");
+        customers_page.shareholder2FirstName.sendKeys(JRandomNameTool.getRandomJianHan(3));
+        customers_page.shareholder2LastName.sendKeys(JRandomNameTool.getRandomJianHan(4));
+        customers_page.shareholder2CertificationType.click();
+        bddUtil.scrollWindowToElement(customers_page.shareholder2CertificationTypeSelectPersonalId).click();
+        customers_page.shareholder2CertificationNo.sendKeys(RandomPhoneNumber.randomPhoneNum());
+        customers_page.shareholder2TimePermanent.click();
+        customers_page.shareholder2DateOfBirth.sendKeys(bddUtil.dateFormate());
+        customers_page.shareholder2Country.click();
+        bddUtil.scrollWindowToElement(customers_page.shareholder2CountrySelectChina).click();
+        customers_page.shareholder2CountryOfResidence.click();
+        bddUtil.scrollWindowToElement(customers_page.shareholder2CountryOfResidenceSelectChina).click();
+        customers_page.shareholder2Email.sendKeys(value);
+        customers_page.shareholder2Phone.sendKeys(RandomPhoneNumber.randomPhoneNum());
+        customers_page.shareholder2ResidentialAddress.sendKeys(JRandomNameTool.getStringRandom(10));
+        customers_page.shareholder2FundScale.sendKeys("25");
+        customers_page.SaveBtnIndustry.click();
+        customers_page.nextBtnIndustry.click();
+    }
+
+    @Step
+    public void verifyWhetherTheBeneficialPageIsDisplayed(){
+        customers_page.beneficialCheckBox.isVisible();
+    }
+
+    @Step
+    public void fillInTheInformationOnTheBeneficialPage(String value){
+        customers_page.beneficial1FirstName.sendKeys(JRandomNameTool.getRandomJianHan(3));
+        customers_page.beneficial1LastName.sendKeys(JRandomNameTool.getRandomJianHan(4));
+        customers_page.beneficial1CertificationType.click();
+        bddUtil.scrollWindowToElement(customers_page.beneficial1CertificationTypeSelectPersonalId).click();
+        customers_page.beneficial1CertificationNo.sendKeys(RandomPhoneNumber.randomPhoneNum());
+        customers_page.beneficial1TimePermanent.click();
+        customers_page.beneficial1FundScale.sendKeys("25");
+        customers_page.beneficial1Email.sendKeys(value);
+        customers_page.beneficial1DateOfBirth.sendKeys(bddUtil.dateFormate());
+        customers_page.beneficial1Country.click();
+        bddUtil.scrollWindowToElement(customers_page.beneficial1CountrySelectChina).click();
+        bddUtil.scrollWindowToElement(customers_page.beneficial1ResidentialAddress).click();
+        customers_page.beneficial1Phone.sendKeys(RandomPhoneNumber.randomPhoneNum());
+        customers_page.beneficial1CountryOfResidence.click();
+        bddUtil.scrollWindowToElement(customers_page.beneficial1CountryOfResidenceSelectChina).click();
+        customers_page.beneficial1ResidentialAddress.sendKeys(JRandomNameTool.getStringRandom(10));
+        customers_page.SaveBtnIndustry.click();
+        customers_page.nextBtnIndustry.click();
+    }
+
+    @Step
+    public void verifyWhetherTheAccountPageIsDisplayed(){
+        customers_page.tellUsAboutAccoutPageTitle.isVisible();
+    }
+
+    @Step
+    public void enterTheAccountInformation(){
+        customers_page.accountCurrency.click();
+        bddUtil.scrollWindowToElement(customers_page.accountCurrencyCNY).click();
+        customers_page.collectionAccountCurrency.click();
+        bddUtil.scrollWindowToElement(customers_page.collectionAccountCurrencyCNY).click();
+        customers_page.SaveBtnIndustry.click();
+        customers_page.nextBtnIndustry.click();
+    }
+
 }
